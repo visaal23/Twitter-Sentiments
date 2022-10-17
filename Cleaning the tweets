@@ -1,0 +1,15 @@
+# Create a function to clean the tweets
+def cleanTxt(text):
+ text = re.sub('@[A-Za-z0–9]+', '', text) #Removing @mentions
+ text = re.sub('#', '', text) # Removing '#' hash tag
+ text = re.sub('RT[\s]+', '', text) # Removing RT
+ text = re.sub('https?:\/\/\S+', '', text) # Removing hyperlink
+ 
+ return text
+
+
+# Clean the tweets
+df['text'] = df['text'].apply(cleanTxt)
+
+# Show the cleaned tweets
+df
