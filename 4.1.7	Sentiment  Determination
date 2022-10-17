@@ -1,0 +1,11 @@
+# Create a function to compute negative (-1), and positive (+1) analysis
+def getAnalysis(score):
+  if score < 0:
+    return 'Negative'
+  elif score == 0:
+    return 'Neutral'
+  else:
+    return 'Positive'
+df['Analysis'] = df['Polarity'].apply(getAnalysis)
+# Show the dataframe
+df
