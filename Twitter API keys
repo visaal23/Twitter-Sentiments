@@ -2,3 +2,12 @@ consumerKey = 'eIm3uZZk3u0iqxEdKj9Lr3Jf6'
 consumerSecret = 'guSP4VrYgwVzD0QiaWAMtJoESVD2cnC3GEsTP56ZXWpuXYN5I7'
 accessToken = '1391239076708188160-GJ2uRRUuMeWh4rR8JhoQrhoIPl3MOW'
 accessTokenSecret = 'Y1fRqLoCm8Pjx12x4Uz3ojFmNtl8ADi93KHqOaS5jPGRO'
+
+# Create the authentication object
+authenticate = tweepy.OAuthHandler(consumerKey, consumerSecret) 
+    
+# Set the access token and access token secret
+authenticate.set_access_token(accessToken, accessTokenSecret) 
+    
+# Creating the API object while passing in auth information
+api = tweepy.API(authenticate, wait_on_rate_limit = True)
