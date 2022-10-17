@@ -1,0 +1,26 @@
+all_tweets=[]
+while True :
+  posts = api.user_timeline(screen_name="BillGates",count = 200,lang ="en", tweet_mode="extended")
+  if(len(all_tweets)==800):
+    break
+  all_tweets.extend(posts)
+  print('N of tweets downloaded till now {}'.format(len(all_tweets)))
+
+#  Print the last 5 tweets
+  #print("Show the 5 recent tweets:\n")
+ # i=1
+  #for tweet in posts:
+   # print(str(i) +') '+ tweet.full_text + '\n')
+    #i= i+1
+   
+  userID = "BillGates"
+from pandas import DataFrame
+outtweets = [[tweet.id_str, 
+              tweet.created_at, 
+              tweet.favorite_count, 
+              tweet.retweet_count, 
+              tweet.full_text.encode("utf-8").decode("utf-8")] 
+             for idx,tweet in enumerate(all_tweets)]
+df = DataFrame(outtweets,columns=["id","created_at","favorite_count","retweet_count", "text"])
+df.to_csv('tweets.csv' ,index=False)
+df
