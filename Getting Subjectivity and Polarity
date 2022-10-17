@@ -1,0 +1,15 @@
+# Create a function to get the subjectivity
+def getSubjectivity(text):
+   return TextBlob(text).sentiment.subjectivity
+
+# Create a function to get the polarity
+def getPolarity(text):
+   return  TextBlob(text).sentiment.polarity
+
+
+# Create two new columns 'Subjectivity' & 'Polarity'
+df['Subjectivity'] = df['text'].apply(getSubjectivity)
+df['Polarity'] = df['text'].apply(getPolarity)
+
+# Show the new dataframe with columns 'Subjectivity' & 'Polarity'
+df
